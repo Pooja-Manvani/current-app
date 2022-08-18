@@ -1,0 +1,20 @@
+// Header area style
+.badge-container{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    margin-right: 0rem;
+    font-size: small;
+}
+@include media-breakpoint-up(lg) { 
+    .badge-container{
+        margin-right: 1.5rem;
+        height: 60px;
+        width: 60px;
+        font-size: x-large;
+    }
+ }
