@@ -1,5 +1,5 @@
-<div class="p-4">
-    <h1>Staffing</h1>
-    <app-staffing-list-presentation>
+<div class="p-4 h-100">
+    <h1 class="pb-4">Staffing</h1>
+    <app-staffing-list-presentation [staffList]="StaffingFormData$ | async">
     </app-staffing-list-presentation>
 </div>

@@ -7,6 +7,7 @@ import { StaffingFormContainerComponent } from './staffing-form-container/staffi
 import { StaffingListContainerComponent } from './staffing-list-container/staffing-list-container.component';
 import { StaffingFormPresentationComponent } from './staffing-form-container/staffing-form-presentation/staffing-form-presentation.component';
 import { StaffingListPresentationComponent } from './staffing-list-container/staffing-list-presentation/staffing-list-presentation.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -19,7 +20,9 @@ import { StaffingListPresentationComponent } from './staffing-list-container/sta
   ],
   imports: [
     CommonModule,
-    StaffingRoutingModule
+    StaffingRoutingModule,
+    NgxPaginationModule
+
   ]
 })
 export class StaffingModule { }

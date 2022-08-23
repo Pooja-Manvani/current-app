@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { staffingData } from '../../staffing.model';
+import { StaffingService } from '../../staffing.service';
 
 @Component({
   selector: 'app-staffing-list-presentation',
@@ -6,8 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./staffing-list-presentation.component.scss']
 })
 export class StaffingListPresentationComponent implements OnInit {
+  
+  p: number = 1;
+  private _staffList!: staffingData[];
+  @Input() set staffList(value: staffingData[] | null ){
+    if (value){
+      this._staffList = value
+      console.log(this._staffList);
+    }
+  }
 
-  constructor() { }
+  public get staffList(): staffingData[] {
+    return this._staffList
+  }
+  
+  constructor(private staffService: StaffingService) {
+   }
 
   ngOnInit(): void {
   }
