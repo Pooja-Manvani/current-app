@@ -10,11 +10,15 @@
     margin-right: 0rem;
     font-size: small;
 }
-@include media-breakpoint-up(lg) { 
+@include media-breakpoint-up(md) { 
     .badge-container{
         margin-right: 1.5rem;
-        height: 60px;
-        width: 60px;
-        font-size: x-large;
+        height: 50px;
+        width: 50px;
+        font-size: large;
     }
  }
+
+ #thead::-webkit-scrollbar {
+    display: none;
+}

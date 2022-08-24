@@ -1,76 +1,78 @@
-<div class="border border-muted rounded bg-white d-flex flex-column  h-100">
+<div class="border border-muted rounded bg-white d-flex flex-column overflow-hidden h-100">
     <!-- Start: Header Section -->
-    <div class="fle">
-
-        <div class="  d-flex justify-content-between border-bottom border-muted p-5">
-            <div class="search-box d-flex p-0 rounded-2 ">
-                <input type="text" placeholder="Search" class="search-box-input border-0 rounded-start p-2 bg-graywhite">
-                <button type="button"
-                    class="btn flex-grow-1 justify-content-center text-muted d-flex rounded-0 rounded-end border-start p-2 fs-5 bg-graywhite">Filters
-                    <span class="icon-circle-down ps-2 mt-1"></span>
-                </button>
-            </div>
-            <div>
-                <button type="button" class="btn btn-outline-primary me-3 p-md-2 fs-5">Reset</button>
-                <button type="button" class="btn btn-primary  p-md-2 fs-5">Add Staff</button>
-            </div>
+    <div class="d-flex justify-content-between border-bottom border-muted p-4 overflow-hidden">
+        <div class="search-box d-flex p-0 rounded-2 ">
+            <input type="text" placeholder="Search" class="search-box-input border-0 rounded-start p-2 bg-graywhite">
+            <button type="button"
+                class="btn flex-grow-1 justify-content-center text-muted d-flex rounded-0 rounded-end border-start p-2 fs-6 bg-graywhite">Filters
+                <span class="icon-circle-down ps-2 mt-1"></span>
+            </button>
         </div>
-        <!-- End: Header Section -->
-        <!-- Start: Table Section -->
-        <table class="text-center  w-100">
-            <!-- Start: Header of Table -->
-            <thead class="border-muted border-bottom text-muted fw-lighter">
-                <tr>
-                    <th class="p-2">Sr. No.</th>
-                    <th class="p-2">Developer Name</th>
-                    <th class="p-2">Project/POC</th>
-                    <th class="p-2">PM/Lead Name</th>
-                    <th class="p-2">Module Lead Name</th>
-                    <th class="p-2">Staffing</th>
-                    <th class="p-2">Role</th>
-                    <th class="p-2">Framework/Tool</th>
-                    <th class="p-2">CSS Framework</th>
-                    <th class="p-2">Joining Date</th>
-                    <th class="p-2">Release Date</th>
-                    <th class="p-2">Status</th>
-                    <th class="p-2">Spend Hours</th>
-                    <th class="p-2">Comments</th>
-                    <th class="p-2">Action</th>
-                </tr>
-            </thead>
-            <!-- End: Header of Table -->
-            <!-- Start: Body of Table -->
-            <tbody class="p-3 ">
-                <tr *ngFor="let m of staffList | paginate: { itemsPerPage: 10, currentPage: p
-                 }, let i = index " class="border-bottom">
-                    <td scope="row" class="p-3">{{ m.id}}</td>
-                    <td class="p-4">{{ m.developerName }}</td>
-                    <td class="p-4">{{ m.project }}</td>
-                    <td class="p-4">{{ m.leadName }}</td>
-                    <td class="p-4">{{ m.moduleLeadName }}</td>
-                    <td class="p-4">{{ m.staffing }}</td>
-                    <td class="p-4">{{ m.role }}</td>
-                    <td class="p-4">{{ m.frameworkTool }}</td>
-                    <td class="p-4">{{ m.cssFramework }}</td>
-                    <td class="p-4">{{ m.joiningDate }}</td>
-                    <td class="p-4">{{ m.releaseDate }}</td>
-                    <td class="p-4">{{ m.status }}}</td>
-                    <td class="p-4">{{ m.spendHours }} hours</td>
-                    <td class="p-4">{{ m.comments }}</td>
-                    <td class="p-4">...</td>
-                </tr>
-    
-                <tr *ngIf="!staffList?.length">
-                    <td colspan="15" class="text-center fw-bold p-4"> No records found.</td>
-                </tr>
-    
-                
-            </tbody>
-            <!-- End: Body of Table -->
-        </table>
+        <div>
+            <button type="button" class="btn btn-outline-primary me-2 p-md-2 fs-6">Reset</button>
+            <button type="button" class="btn btn-primary  p-md-2 fs-6">Add Staff</button>
+        </div>
     </div>
-    <div class="align-middle p-3" >
-        <pagination-controls (pageChange)="p = $event" ></pagination-controls> 
+    <!-- End: Header Section -->
+    <!-- Start: Table Section -->
+    <div class="d-flex flex-column overflow-hidden flex-grow-1">
+
+        <div id="thead" class="overflow-horizontal">
+            <table class="table mb-0 text-center">
+                <thead class="border-muted border-bottom text-muted fw-lighter overflow-hidden">
+                    <tr>
+                        <th class="p-2">Sr. No.</th>
+                        <th class="p-2">Developer Name</th>
+                        <th class="p-2">Project/POC</th>
+                        <th class="p-2">PM/Lead Name</th>
+                        <th class="p-2">Module Lead Name</th>
+                        <th class="p-2">Staffing</th>
+                        <th class="p-2">Role</th>
+                        <th class="p-2">Framework/Tool</th>
+                        <th class="p-2">CSS Framework</th>
+                        <th class="p-2">Joining Date</th>
+                        <th class="p-2">Release Date</th>
+                        <th class="p-2">Status</th>
+                        <th class="p-2">Spend Hours</th>
+                        <th class="p-2">Comments</th>
+                        <th class="p-2">Action</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="flex-grow-1 overflow-auto d-flex" (scroll)="getTBodyScroll($event)">
+            <table class="table mb-0 text-center">
+                <tbody class="p-3 overflow-hidden">
+                    <tr *ngFor="let m of staffList | paginate: { itemsPerPage: 10, currentPage: p }, let i = index "
+                        class="border-bottom">
+                        <td scope="row" class="p-2">{{ m.id}}</td>
+                        <td class="p-2">{{ m.developerName }}</td>
+                        <td class="p-2">{{ m.project }}</td>
+                        <td class="p-2">{{ m.leadName }}</td>
+                        <td class="p-2">{{ m.moduleLeadName }}</td>
+                        <td class="p-2">{{ m.staffing }}</td>
+                        <td class="p-2">{{ m.role }}</td>
+                        <td class="p-2">{{ m.frameworkTool }}</td>
+                        <td class="p-2">{{ m.cssFramework }}</td>
+                        <td class="p-2">{{ m.joiningDate }}</td>
+                        <td class="p-2">{{ m.releaseDate }}</td>
+                        <td class="p-2">{{ m.status }}}</td>
+                        <td class="p-2">{{ m.spendHours }} hours</td>
+                        <td class="p-2">{{ m.comments }}</td>
+                        <td class="p-2">...</td>
+                    </tr>
+
+                    <tr *ngIf="!staffList?.length">
+                        <td colspan="15" class="text-center fw-bold p-4"> No records found.</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
     </div>
-    <!-- End: Table Section -->
+    <!-- Start: Pagination -->
+    <div class="d-flex align-items-center justify-content-center p-5 w-100">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+    <!-- End: Pagination -->
 </div>

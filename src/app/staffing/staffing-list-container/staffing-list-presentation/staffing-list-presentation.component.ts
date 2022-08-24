@@ -28,4 +28,10 @@ export class StaffingListPresentationComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getTBodyScroll(e: any ) {
+    console.log(e.target.scrollLeft);
+    const getHead:any = document.getElementById("thead");
+    getHead.scrollLeft = e.target.scrollLeft
+  }
+
 }

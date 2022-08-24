@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { staffingData } from '../staffing.model';
 import { StaffingService } from '../staffing.service';
@@ -7,6 +7,8 @@ import { StaffingService } from '../staffing.service';
   templateUrl: './staffing-list-container.component.html'
 })
 export class StaffingListContainerComponent implements OnInit {
+
+  @HostBinding('class') classes = 'd-flex h-100';
 
   StaffingFormData$: Observable<staffingData[]>
 

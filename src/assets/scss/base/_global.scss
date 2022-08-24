@@ -86,6 +86,11 @@ body {
 
 .overflow-vertical {
     overflow-y: auto;
+    overflow-x: hidden;
+}
+.overflow-horizontal {
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 
 .border-radius {
