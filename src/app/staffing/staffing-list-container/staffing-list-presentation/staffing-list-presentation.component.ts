@@ -33,5 +33,10 @@ export class StaffingListPresentationComponent implements OnInit {
     const getHead:any = document.getElementById("thead");
     getHead.scrollLeft = e.target.scrollLeft
   }
+  getTHeadScroll(e: any ) {
+    console.log(e.target.scrollLeft);
+    const getBody:any = document.getElementById("tbody");
+    getBody.scrollLeft = e.target.scrollLeft
+  }
 
 }

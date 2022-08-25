@@ -8,6 +8,11 @@
     color: #212529;
     border: 1px solid #ced4da;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+    @include media-breakpoint-down(md) { 
+        display: none;
+        width: 0%;
+     }
 }
 
 .search-box-input{
