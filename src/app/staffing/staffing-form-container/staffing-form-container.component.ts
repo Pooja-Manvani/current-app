@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { staffingData } from '../staffing.model';
+import { StaffingService } from '../staffing.service';
 
 @Component({
   selector: 'app-staffing-form-container',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StaffingFormContainerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private staffService:StaffingService) { }
 
   ngOnInit(): void {
+  }
+
+  public formdata(Data: staffingData){
+    this.staffService.postdata(Data).subscribe(() => {
+      alert("Data added");
+      // this.route.navigateByUrl('/employee/list');
+    })
   }
 
 }

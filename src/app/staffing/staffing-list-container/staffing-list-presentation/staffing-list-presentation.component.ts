@@ -39,4 +39,8 @@ export class StaffingListPresentationComponent implements OnInit {
     getBody.scrollLeft = e.target.scrollLeft
   }
 
+  onReset() {
+    window.location.reload();
+  }
+
 }

@@ -8,6 +8,7 @@ import { StaffingListContainerComponent } from './staffing-list-container/staffi
 import { StaffingFormPresentationComponent } from './staffing-form-container/staffing-form-presentation/staffing-form-presentation.component';
 import { StaffingListPresentationComponent } from './staffing-list-container/staffing-list-presentation/staffing-list-presentation.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
   imports: [
     CommonModule,
     StaffingRoutingModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ReactiveFormsModule
 
   ]
 })
