@@ -11,6 +11,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
+
 @NgModule({
   declarations: [
     StaffingComponent,
@@ -24,7 +25,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     StaffingRoutingModule,
     NgxPaginationModule,
     ReactiveFormsModule
-
   ]
 })
 export class StaffingModule { }

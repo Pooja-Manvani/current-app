@@ -20,4 +20,10 @@ export class StaffingListContainerComponent implements OnInit {
   this.StaffingFormData$ = this.staffService.getdata();
   }
 
+  public  emitDeleteid(id:number) {
+    this.staffService.deleteData(id).subscribe(() => {
+      alert("Data Deleted");
+      this.StaffingFormData$ = this.staffService.getdata();
+    })
+  }
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { staffingData } from '../staffing.model';
 import { StaffingService } from '../staffing.service';
 
@@ -9,15 +11,29 @@ import { StaffingService } from '../staffing.service';
 })
 export class StaffingFormContainerComponent implements OnInit {
 
-  constructor(private staffService:StaffingService) { }
+  public getByidData$:Observable<staffingData>;
+  public getid:number;
+
+  constructor(private staffService:StaffingService, private active:ActivatedRoute, private route:Router) { 
+    this.getid = this.active.snapshot.params['id'];
+    this.getByidData$ = new Observable();
+  }
 
   ngOnInit(): void {
+    this.getByidData$ = this.staffService.getbyid(this.getid)
   }
 
   public formdata(Data: staffingData){
     this.staffService.postdata(Data).subscribe(() => {
       alert("Data added");
-      // this.route.navigateByUrl('/employee/list');
+      this.route.navigateByUrl('/staffing/staffingList');
+    })
+  }
+
+  public emitUpdateData(data: staffingData){
+    this.staffService.updateData(this.getid,data).subscribe(() => {
+      alert("Data Updated");
+      this.route.navigateByUrl('/staffing/staffingList');
     })
   }
 

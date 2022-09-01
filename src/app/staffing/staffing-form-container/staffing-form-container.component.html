@@ -1,3 +1,5 @@
 <app-staffing-form-presentation 
 (emitFormdata)="formdata($event)"
+[editData]="getByidData$ |async"
+(emitUpdatedata)="emitUpdateData($event)"
 ></app-staffing-form-presentation>

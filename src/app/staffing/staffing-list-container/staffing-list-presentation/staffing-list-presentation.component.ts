@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { staffingData } from '../../staffing.model';
 import { StaffingService } from '../../staffing.service';
 
@@ -22,7 +23,10 @@ export class StaffingListPresentationComponent implements OnInit {
     return this._staffList
   }
   
-  constructor(private staffService: StaffingService) {
+  @Output() public emitDeleteid: EventEmitter<number>;
+
+  constructor(private staffService: StaffingService, private route: Router) {
+    this.emitDeleteid = new EventEmitter<number>();
    }
 
   ngOnInit(): void {
@@ -41,6 +45,14 @@ export class StaffingListPresentationComponent implements OnInit {
 
   onReset() {
     window.location.reload();
+  }
+
+  popUp() {
+    
+  }
+
+  onDelete(id: number) {
+    this.emitDeleteid.emit(id);
   }
 
 }
