@@ -2,120 +2,214 @@
 <div class="card m-4">
     <h2 class="text-center pt-3">{{ formtitle }}</h2>
     <div class="card-body fw-bold text-muted">
-        <form [formGroup]="registerForm">
-                
-                <div class="form-group row mb-3 justify-content-center">
-                    <label class="col-2">Project / POC</label>
-                    <input type="text" formControlName="project" class="form-control col-5"  />
-                    <!-- <div *ngIf="submitted && f.project.errors" class="invalid-feedback">
-                        <div *ngIf="f.project.errors.required">Project Name is required</div>
-                    </div> -->
+        <form [formGroup]="registerForm" (ngSubmit)="OnSubmit()">
+
+            <div class="form-group row mb-3 justify-content-center">
+                <label class="col-2 text">Project / POC</label>
+                <input type="text" formControlName="project" class="form-control col-6"
+                    [ngClass]="{ 'is-invalid': submitted && f['moduleLeadName'].errors }" />
+                <div class="text-danger " *ngIf="submitted && f['project'].errors">
+                    <div class="text-danger" *ngIf="f['project'].errors['required']">
+                        project Required.
+                    </div>
+                </div>
+            </div>
+
+            <div class="row form-group d-flex mb-3 justify-content-center">
+                <label for="leadName" class="col-2">PM / Lead Name</label>
+                <input type="text" formControlName="leadName" class="form-control col-6"
+                    [ngClass]="{ 'is-invalid': submitted && f['leadName'].errors }" />
+                <div class="text-danger " *ngIf="submitted && f['leadName'].errors">
+                    <div class="text-danger" *ngIf="f['leadName'].errors['required']">
+                        Lead Name Required.
+                    </div>
+                </div>
+            </div>
+
+            <div class="row form-group d-flex mb-3 justify-content-center">
+                <label for="moduleLeadName" class="col-2">Module Lead Name</label>
+                <input type="text" formControlName="moduleLeadName" class="form-control col-6"
+                    [ngClass]="{ 'is-invalid': submitted && f['moduleLeadName'].errors }" />
+                <div class="text-danger " *ngIf="submitted && f['moduleLeadName'].errors">
+                    <div class="text-danger" *ngIf="f['moduleLeadName'].errors['required']">
+                        Module Lead Name Required.
+                    </div>
+                </div>
+            </div>
+
+            <div class="row form-group d-flex mb-3 justify-content-center">
+                <label class="col-2"> Developer Name</label>
+                <input type="text" formControlName="developerName" class="form-control col-6" />
+                <div class="text-danger "
+                    *ngIf="f['developerName'].touched && f['developerName'].errors && f['developerName'].errors['required']">
+                    <small class="text-danger">
+                        Last Name Required.
+                    </small>
+                </div>
+            </div>
+
+            <!-- Staffing -->
+            <div class="row form-group mb-3 justify-content-center">
+                <label class="col-2">Staffing</label>
+                <select formControlName="staffing" class="form-control col-6">
+                    <option value=""></option>
+                    <option value="official">Official</option>
+                    <option value="shadow">Shadow</option>
+                </select>
+                <div class="text-danger "
+                    *ngIf="f['staffing'].touched && f['staffing'].errors && f['staffing'].errors['required']">
+                    <small class="text-danger">
+                        Last Name Required.
+                    </small>
+                </div>
+            </div>
+
+            <!-- Role -->
+            <div class="row form-group  mb-3 justify-content-center">
+                <label class="col-2">Role</label>
+                <select formControlName="role" class="form-control col-6">
+                    <option value=""></option>
+                    <option value="UI">UI</option>
+                    <option value="frontend">Frontend</option>
+                    <option value="mean">Mean</option>
+                </select>
+                <div class="text-danger " *ngIf="f['role'].touched && f['role'].errors && f['role'].errors['required']">
+                    <small class="text-danger">
+                        Last Name Required.
+                    </small>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-6 justify-content-end">
+                    <!-- Framework -->
+                    <div class="row form-group col  mb-3 justify-content-end">
+                        <label class="col-4">Framework/Tool</label>
+                        <select formControlName="frameworkTool" class="form-control col-4">
+                            <option value=""></option>
+                            <option value="react">React</option>
+                            <option value="angular">Angular</option>
+                            <option value="vue">Vue</option>
+                        </select>
+                        <div class="text-danger "
+                            *ngIf="f['frameworkTool'].touched && f['frameworkTool'].errors && f['frameworkTool'].errors['required']">
+                            <small class="text-danger">
+                                Last Name Required.
+                            </small>
+                        </div>
+                    </div>
+
+                    <!-- Joining Date -->
+                    <div class="row form-group justify-content-end mb-3 ">
+                        <label class="col-4">Joining Date</label>
+                        <input type="date" formControlName="joiningDate" class="form-control col-4" />
+                        <div class="text-danger "
+                            *ngIf="f['joiningDate'].touched && f['joiningDate'].errors && f['joiningDate'].errors['required']">
+                            <small class="text-danger">
+                                Last Name Required.
+                            </small>
+                        </div>
+                    </div>
+
+                    <!-- Status -->
+                    <div class="row form-group justify-content-end mb-3">
+                        <label class="col-4">Status</label>
+                        <select formControlName="status" class="form-control col-4">
+                            <option value=""></option>
+                            <option value="hold">Hold</option>
+                            <option value="yet to start">Yet to Start</option>
+                            <option value="in progress">In Progress</option>
+                            <option value="closed">Closed</option>
+                        </select>
+                        <div class="text-danger "
+                            *ngIf="f['status'].touched && f['status'].errors && f['status'].errors['required']">
+                            <small class="text-danger">
+                                Last Name Required.
+                            </small>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="row form-group d-flex mb-3 justify-content-center">
-                    <label for="leadName" class="col-2">PM / Lead Name</label>
-                    <input type="text" formControlName="leadName" class="form-control col-5"  />
-                    <!-- <div *ngIf="submitted && f.leadName.errors" class="invalid-feedback">
-                        <div *ngIf="f.leadName.errors.required">Last Name is required</div>
-                    </div> -->
-                </div>
+                <div class="col-6">
+                    <!-- CSS Framework -->
+                    <div class="row form-group mb-3 justify-content-start">
+                        <label class="col-4 ps-5">CSS Framework</label>
+                        <select formControlName="cssFramework" class="form-control col-4">
+                            <option value=""></option>
+                            <option value="bootsrap">Bootstrap</option>
+                            <option value="tailwind">Tailwind</option>
+                        </select>
+                        <div class="text-danger "
+                            *ngIf="f['cssFramework'].touched && f['cssFramework'].errors && f['cssFramework'].errors['required']">
+                            <small class="text-danger">
+                                Last Name Required.
+                            </small>
+                        </div>
+                    </div>
 
-                <div class="row form-group d-flex mb-3 justify-content-center">
-                    <label class="col-2">Module Lead Name</label>
-                    <input type="text" formControlName="moduleLeadName" class="form-control col-5" />
-                    <!-- <div *ngIf="submitted && f.moduleLead.errors" class="invalid-feedback">
-                        <div *ngIf="f.moduleLead.errors.required">Last Name is required</div>
-                    </div> -->
-                </div>
+                    <!-- Release Date -->
+                    <div class=" row form-group justify-content-start mb-3">
+                        <label class="col-4 ps-5">Release Date</label>
+                        <input type="date" formControlName="releaseDate" class="form-control col-4" />
+                        <div class="text-danger "
+                            *ngIf="f['releaseDate'].touched && f['releaseDate'].errors && f['releaseDate'].errors['required']">
+                            <small class="text-danger">
+                                Last Name Required.
+                            </small>
+                        </div>
+                    </div>
 
-                <div class="row form-group d-flex mb-3 justify-content-center">
-                    <label class="col-2"> Developer Name</label>
-                    <input type="text" formControlName="developerName" class="form-control col-5" />
-                    <!-- <div *ngIf="submitted && f.developerName.errors" class="invalid-feedback">
-                        <div *ngIf="f.developerName.errors.required">Last Name is required</div>
-                    </div> -->
-                </div>
+                    <!-- Billable / Non-Billable -->
+                    <div class=" row form-group justify-content-start mb-3">
+                        <label class="col-4 ps-5">Bill</label>
+                        <select formControlName="bill" class="form-control col-4">
+                            <option value=""></option>
+                            <option value="billable">Billable</option>
+                            <option value="non-billable">Non-Billable</option>
+                        </select>
+                        <div class="text-danger "
+                            *ngIf="f['bill'].touched && f['bill'].errors && f['bill'].errors['required']">
+                            <small class="text-danger">
+                                Last Name Required.
+                            </small>
+                        </div>
+                    </div>
 
-                <!-- Staffing -->
-                <div class="row form-group mb-3 justify-content-center">
-                    <label class="col-2">Staffing</label>
-                    <select formControlName="staffing" class="form-control col-5" >
-                        <option value=""></option>
-                        <option value="official">Official</option>
-                        <option value="shadow">Shadow</option>
-                    </select>
-                    <!-- <div *ngIf="submitted && f.staffing.errors" class="invalid-feedback">
-                        <div *ngIf="f.staffing.errors.required">Staffing is required</div>
-                    </div> -->
                 </div>
+            </div>
 
-                <!-- Role -->
-                <div class="row form-group  mb-3 justify-content-center">
-                    <label class="col-2">Role</label>
-                    <select formControlName="role" class="form-control col-5" >
-                        <option value=""></option>
-                        <option value="UI">UI</option>
-                        <option value="frontend">Frontend</option>
-                        <option value="mean">Mean</option>
-                    </select>
-                    <!-- <div *ngIf="submitted && f.role.errors" class="invalid-feedback">
-                        <div *ngIf="f.role.errors.required">Role is required</div>
-                    </div> -->
+            <!-- Spend Hours -->
+            <div class="row form-group d-flex mb-3 justify-content-center">
+                <label class="col-2"> Spend Hours</label>
+                <input type="text" formControlName="spendHours" class="form-control col-6" />
+                <div class="text-danger "
+                    *ngIf="f['spendHours'].touched && f['spendHours'].errors && f['spendHours'].errors['required']">
+                    <small class="text-danger">
+                        Last Name Required.
+                    </small>
                 </div>
+            </div>
 
-            <!-- Framework -->
-                <div class="row form-group col  mb-3 justify-content-center">
-                    <label class="col-2">Framework/Tool</label>
-                    <select formControlName="frameworkTool" class="form-control col-5" >
-                        <option value=""></option>
-                        <option value="react">React</option>
-                        <option value="angular">Angular</option>
-                        <option value="vue">Vue</option>
-                    </select>
-                    <!-- <div *ngIf="submitted && f.framework.errors" class="invalid-feedback">
-                        <div *ngIf="f.framework.errors.required">Framework is required</div>
-                    </div> -->
-                </div>
 
-                <div class="row form-group mb-3 justify-content-center">
-                    <label class="col-2">CSS Framework</label>
-                    <select formControlName="cssFramework" class="form-control col-5" >
-                        <option value=""></option>
-                        <option value="bootsrap">Bootstrap</option>
-                        <option value="tailwind">Tailwind</option>
-                    </select>
-                    <!-- <div *ngIf="submitted && f.cssFramework.errors" class="invalid-feedback">
-                        <div *ngIf="f.cssFramework.errors.required">Framework is required</div>
-                    </div> -->
-                </div>
-
-            <!-- Joining Date -->
-                <div class="row form-group justify-content-center mb-3">
-                    <label class="col-2">Joining Date</label>
-                    <input type="date" formControlName="joiningDate" class="form-control col-5"  />
-                    <!-- <div *ngIf="submitted && f.joiningDate.errors" class="invalid-feedback">
-                        <div *ngIf="f.joiningDate.errors.required">Date is required</div>
-                        <div *ngIf="f.joiningDate.errors.pattern">Date must be a valid date in the format YYYY-MM-DD</div>
-                    </div> -->
-                </div>
-
-                <div class="row form-group justify-content-center">
-                    <label class="col-2">Release Date</label>
-                    <input type="date" formControlName="releaseDate" class="form-control col-5"  />
-                    <!-- <div *ngIf="submitted && f.releaseDate.errors" class="invalid-feedback">
-                        <div *ngIf="f.releaseDate.errors.required">Date is required</div>
-                        <div *ngIf="f.releaseDate.errors.pattern">Date must be a valid date in the format YYYY-MM-DD</div>
-                    </div> -->
-                </div>
-
-            <!-- Status -->
-            <!-- Spend Hours --> 
             <!-- Comments -->
-            <!-- Billable / Non-Billable -->
-            
+            <div class="row form-group d-flex mb-3 justify-content-center">
+                <label class="col-2">Comments</label>
+                <input type="text" formControlName="comments" class="form-control col-6" />
+                <div class="text-danger "
+                    *ngIf="f['comments'].touched && f['comments'].errors && f['comments'].errors['required']">
+                    <small class="text-danger">
+                        Last Name Required.
+                    </small>
+                </div>
+            </div>
+
+
             <div class="text-center py-5">
-                <button class="btn btn-primary" (click)="OnSubmit()" >Register</button>
-                <button class="btn btn-gray text-white ms-3" type="reset" (click)="onCancel()">Cancel</button>
+                <button type="submit" class="btn btn-primary"  [disabled]="registerForm.invalid">Register</button>
+                <button type="button" class="btn btn-gray text-white ms-3" type="reset"
+                    (click)="onCancel()">Cancel</button>
             </div>
         </form>
     </div>
