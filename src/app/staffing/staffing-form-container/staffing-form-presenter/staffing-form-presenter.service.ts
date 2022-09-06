@@ -7,25 +7,23 @@ import { staffingData } from '../../staffing.model';
   providedIn: 'root'
 })
 export class StaffingFormPresenterService {
-  public getdata$:Observable<staffingData>;
-  private getdata:Subject<staffingData>;
-  public addUser: Subject<any>
-  public addUser$: Observable<any>
+  public getdata$: Observable<staffingData>;
+  private getdata: Subject<staffingData>;
+
 
   constructor(private fb: FormBuilder) {
-    this.getdata = new Subject<staffingData> ();
-    this.getdata$ = this.getdata.asObservable ();
-    this.addUser = new Subject<staffingData> ();
-    this.addUser$ = this.addUser.asObservable ();
-   }
+    this.getdata = new Subject<staffingData>();
+    this.getdata$ = this.getdata.asObservable();
 
-   public buildForm(){
-   return this.fb.group({
+  }
+
+  public buildForm() {
+    return this.fb.group({
       project: ['', Validators.required],
       leadName: ['', [Validators.required]],
       moduleLeadName: ['', Validators.required],
       developerName: ['', Validators.required],
-      staffing:  ['', Validators.required],
+      staffing: ['', Validators.required],
       role: ['', Validators.required],
       frameworkTool: ['', Validators.required],
       cssFramework: ['', Validators.required],
@@ -36,21 +34,20 @@ export class StaffingFormPresenterService {
       spendHours: ['', Validators.required],
       comments: ['', Validators.required],
     })
-   }
+  }
 
-   public onSubmit(registerForm:any){
-     // stop here if form is invalid
-     if (registerForm.invalid) {
+  public onSubmit(registerForm: any) {
+    // stop here if form is invalid
+    if (registerForm.valid) {
+      this.getdata.next(registerForm.value)
+    }
+    else {
       return;
-  } else {
-    this.addUser.next(registerForm.value)
+    }
   }
-   }
 
-
-
-   public getFormdata(data: staffingData){
+  public getFormdata(data: staffingData) {
     this.getdata.next(data);
-   }
-
   }
+
+}

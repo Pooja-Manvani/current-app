@@ -10,7 +10,7 @@
 
 <div class="p-4 d-flex flex-column flex-grow-1 overflow-hidden bg-graywhite">
     <h3 class="pb-3 overflow-hidden">Staffing</h3>
-    <div class="h-100 overflow-hidden">
+    <div class="h-100 shadow-sm overflow-hidden">
         <app-staffing-list-presentation [staffList]="StaffingFormData$ | async" (emitDeleteid)="emitDeleteid($event)">
         </app-staffing-list-presentation>
     </div>

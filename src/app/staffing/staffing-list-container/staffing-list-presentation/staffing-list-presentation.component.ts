@@ -55,4 +55,8 @@ export class StaffingListPresentationComponent implements OnInit {
     this.emitDeleteid.emit(id);
   }
 
+  onFilter() {
+    
+  }
+
 }

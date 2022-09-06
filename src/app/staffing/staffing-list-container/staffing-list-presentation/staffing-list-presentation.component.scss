@@ -58,6 +58,9 @@
     background-color: rgb(208, 208, 208);
   }
 
+  #thead::-webkit-scrollbar {
+    height: 0;
+}
   
 // .ngx-pagination {
 //     padding-left: 0px !important;

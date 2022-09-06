@@ -1,179 +1,176 @@
 <!-- main app container -->
-<div class="card m-4">
+<div class="card border-0 shadow-sm m-4 bg-white">
     <h2 class="text-center pt-3">{{ formtitle }}</h2>
     <div class="card-body fw-bold text-muted">
         <form [formGroup]="registerForm" (ngSubmit)="OnSubmit()">
 
-            <div class="form-group row mb-3 justify-content-center">
-                <label class="col-2 text">Project / POC</label>
-                <input type="text" formControlName="project" class="form-control col-6"
-                    [ngClass]="{ 'is-invalid': submitted && f['moduleLeadName'].errors }" />
-                <div class="text-danger " *ngIf="submitted && f['project'].errors">
-                    <div class="text-danger" *ngIf="f['project'].errors['required']">
-                        project Required.
-                    </div>
+            <!-- Project Name -->
+            <div class="form-group row mb-3 justify-content-center overflow-hidden">
+                <label class="col-lg-2 col-10 text-truncate">Project / POC</label>
+                <div class="col-lg-6 col-10">
+                    <input type="text" formControlName="project" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f['project'].errors }" />
+                        <div *ngIf="submitted && f['project'].errors" class="text-danger small">
+                            <div *ngIf="f['project'].errors['required']">project is required</div>
+                        </div>
                 </div>
             </div>
 
-            <div class="row form-group d-flex mb-3 justify-content-center">
-                <label for="leadName" class="col-2">PM / Lead Name</label>
-                <input type="text" formControlName="leadName" class="form-control col-6"
+            <!-- Lead Name -->
+            <div class="row form-group d-flex mb-3 justify-content-center overflow-hidden">
+                <label for="leadName" class="col-lg-2 col-10 text-truncate">PM / Lead Name</label>
+                <div class="col-lg-6 col-10">
+                    <input type="text" formControlName="leadName" class="form-control "
                     [ngClass]="{ 'is-invalid': submitted && f['leadName'].errors }" />
-                <div class="text-danger " *ngIf="submitted && f['leadName'].errors">
-                    <div class="text-danger" *ngIf="f['leadName'].errors['required']">
-                        Lead Name Required.
+                    <div *ngIf="submitted && f['leadName'].errors" class="text-danger small">
+                        <div *ngIf="f['leadName'].errors['required']"> Lead Name is required</div>
                     </div>
                 </div>
             </div>
 
-            <div class="row form-group d-flex mb-3 justify-content-center">
-                <label for="moduleLeadName" class="col-2">Module Lead Name</label>
-                <input type="text" formControlName="moduleLeadName" class="form-control col-6"
+            <!-- Module-Lead Name -->
+            <div class="row form-group d-flex mb-3 justify-content-center overflow-hidden">
+                <label for="moduleLeadName" class="col-lg-2 col-10 text-truncate">Module Lead Name</label>
+                <div class="col-lg-6 col-10">
+                    <input type="text" formControlName="moduleLeadName" class="form-control"
                     [ngClass]="{ 'is-invalid': submitted && f['moduleLeadName'].errors }" />
-                <div class="text-danger " *ngIf="submitted && f['moduleLeadName'].errors">
-                    <div class="text-danger" *ngIf="f['moduleLeadName'].errors['required']">
-                        Module Lead Name Required.
-                    </div>
+                        <div *ngIf="submitted && f['moduleLeadName'].errors" class="text-danger small"> 
+                            <div *ngIf="f['moduleLeadName'].errors['required']">Module Lead Name is required</div>
+                        </div>
                 </div>
             </div>
 
-            <div class="row form-group d-flex mb-3 justify-content-center">
-                <label class="col-2"> Developer Name</label>
-                <input type="text" formControlName="developerName" class="form-control col-6" />
-                <div class="text-danger "
-                    *ngIf="f['developerName'].touched && f['developerName'].errors && f['developerName'].errors['required']">
-                    <small class="text-danger">
-                        Last Name Required.
-                    </small>
+            <!-- Developer Name -->
+            <div class="row form-group d-flex mb-3 justify-content-center overflow-hidden">
+                <label class="col-lg-2 col-10 text-truncate"> Developer Name</label>
+                <div class="col-lg-6 col-10">
+                    <input type="text" formControlName="developerName" class="form-control "
+                    [ngClass]="{ 'is-invalid': submitted && f['developerName'].errors }" />
+                    <div *ngIf="submitted && f['developerName'].errors" class="text-danger small"> 
+                        <div *ngIf="f['developerName'].errors['required']">Developer Name is required</div>
+                    </div>
                 </div>
             </div>
 
             <!-- Staffing -->
-            <div class="row form-group mb-3 justify-content-center">
-                <label class="col-2">Staffing</label>
-                <select formControlName="staffing" class="form-control col-6">
-                    <option value=""></option>
-                    <option value="official">Official</option>
-                    <option value="shadow">Shadow</option>
-                </select>
-                <div class="text-danger "
-                    *ngIf="f['staffing'].touched && f['staffing'].errors && f['staffing'].errors['required']">
-                    <small class="text-danger">
-                        Last Name Required.
-                    </small>
+            <div class="row form-group mb-3 justify-content-center overflow-hidden">
+                <label class="col-lg-2 col-10 text-truncate">Staffing</label>
+                <div class=" col-lg-6 col-10">
+                    <select formControlName="staffing"  [ngClass]="{ 'is-invalid': submitted && f['staffing'].errors }"  class="form-control">
+                        <option [ngValue]="c.staffingId" *ngFor="let c of staffing">
+                            {{c.staffingName}}
+                        </option>
+
+                    </select>
+                    <div *ngIf="submitted && f['staffing'].errors" class="text-danger small"> 
+                        <div *ngIf="f['staffing'].errors['required']">Staffing is required</div>
+                    </div>
                 </div>
             </div>
 
             <!-- Role -->
-            <div class="row form-group  mb-3 justify-content-center">
-                <label class="col-2">Role</label>
-                <select formControlName="role" class="form-control col-6">
-                    <option value=""></option>
-                    <option value="UI">UI</option>
-                    <option value="frontend">Frontend</option>
-                    <option value="mean">Mean</option>
-                </select>
-                <div class="text-danger " *ngIf="f['role'].touched && f['role'].errors && f['role'].errors['required']">
-                    <small class="text-danger">
-                        Last Name Required.
-                    </small>
+            <div class="row form-group  mb-3 justify-content-center overflow-hidden">
+                <label class="col-lg-2 col-10 text-truncate">Role</label>
+                <div class="col-lg-6 col-10">
+                    <select formControlName="role"  [ngClass]="{ 'is-invalid': submitted && f['role'].errors }" class="form-control ">
+                        <option [ngValue]="c.roleId" *ngFor="let c of role">
+                            {{c.roleName}}
+                        </option>
+                    </select>
+                    <div *ngIf="submitted && f['role'].errors" class="text-danger small"> 
+                        <div *ngIf="f['role'].errors['required']">Role is required</div>
+                    </div>
                 </div>
             </div>
 
 
 
             <div class="row">
-                <div class="col-6 justify-content-end">
+                <div class="col-lg-6 col-12 justify-content-lg-end">
                     <!-- Framework -->
-                    <div class="row form-group col  mb-3 justify-content-end">
-                        <label class="col-4">Framework/Tool</label>
-                        <select formControlName="frameworkTool" class="form-control col-4">
-                            <option value=""></option>
-                            <option value="react">React</option>
-                            <option value="angular">Angular</option>
-                            <option value="vue">Vue</option>
-                        </select>
-                        <div class="text-danger "
-                            *ngIf="f['frameworkTool'].touched && f['frameworkTool'].errors && f['frameworkTool'].errors['required']">
-                            <small class="text-danger">
-                                Last Name Required.
-                            </small>
+                    <div class="row form-group  mb-3 justify-content-center justify-content-lg-end overflow-hidden">
+                        <label class="col-lg-4 col-10 text-truncate">Framework/Tool</label>
+                        <div class="col-lg-4 col-10">
+                            <select formControlName="frameworkTool"  [ngClass]="{ 'is-invalid': submitted && f['frameworkTool'].errors }"
+                                class="form-control ">
+                                <option [ngValue]="c.frameworkToolId" *ngFor="let c of frameworkTool">
+                                    {{c.frameworkToolName}}
+                                </option>
+                            </select>
+                            <div *ngIf="submitted && f['frameworkTool'].errors" class="text-danger small"> 
+                                <div *ngIf="f['frameworkTool'].errors['required']">FrameworkTool is required</div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Joining Date -->
-                    <div class="row form-group justify-content-end mb-3 ">
-                        <label class="col-4">Joining Date</label>
-                        <input type="date" formControlName="joiningDate" class="form-control col-4" />
-                        <div class="text-danger "
-                            *ngIf="f['joiningDate'].touched && f['joiningDate'].errors && f['joiningDate'].errors['required']">
-                            <small class="text-danger">
-                                Last Name Required.
-                            </small>
+                    <div class="row form-group justify-content-center justify-content-lg-end mb-3 overflow-hidden">
+                        <label class="col-lg-4 col-10 text-truncate">Joining Date</label>
+                        <div class="col-lg-4 col-10">
+                            <input type="date" formControlName="joiningDate" class="form-control "
+                            [ngClass]="{ 'is-invalid': submitted && f['joiningDate'].errors }">
+                            <div *ngIf="submitted && f['joiningDate'].errors" class="text-danger small"> 
+                                <div *ngIf="f['joiningDate'].errors['required']">JoiningDate is required</div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Status -->
-                    <div class="row form-group justify-content-end mb-3">
-                        <label class="col-4">Status</label>
-                        <select formControlName="status" class="form-control col-4">
-                            <option value=""></option>
-                            <option value="hold">Hold</option>
-                            <option value="yet to start">Yet to Start</option>
-                            <option value="in progress">In Progress</option>
-                            <option value="closed">Closed</option>
-                        </select>
-                        <div class="text-danger "
-                            *ngIf="f['status'].touched && f['status'].errors && f['status'].errors['required']">
-                            <small class="text-danger">
-                                Last Name Required.
-                            </small>
+                    <div class="row form-group justify-content-center justify-content-lg-end mb-3 overflow-hidden">
+                        <label class="col-lg-4 col-10 text-truncate">Status</label>
+                        <div class="col-lg-4 col-10">
+                            <select formControlName="status" [ngClass]="{ 'is-invalid': submitted && f['status'].errors }" class="form-control ">
+                                <option [ngValue]="c.statusId" *ngFor="let c of status">
+                                    {{c.statusName}}
+                                </option>
+                            </select>
+                            <div *ngIf="submitted && f['status'].errors" class="text-danger small"> 
+                                <div *ngIf="f['status'].errors['required']">Status is required</div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-6">
+                <div class="col-lg-6 col-12">
                     <!-- CSS Framework -->
-                    <div class="row form-group mb-3 justify-content-start">
-                        <label class="col-4 ps-5">CSS Framework</label>
-                        <select formControlName="cssFramework" class="form-control col-4">
-                            <option value=""></option>
-                            <option value="bootsrap">Bootstrap</option>
-                            <option value="tailwind">Tailwind</option>
-                        </select>
-                        <div class="text-danger "
-                            *ngIf="f['cssFramework'].touched && f['cssFramework'].errors && f['cssFramework'].errors['required']">
-                            <small class="text-danger">
-                                Last Name Required.
-                            </small>
+                    <div class="row form-group justify-content-center justify-content-lg-start mb-3 overflow-hidden">
+                        <label class="col-lg-4 col-10 ps-2 ps-lg-5 text-truncate">CSS Framework</label>
+                        <div class="col-lg-4 col-10">
+                            <select formControlName="cssFramework"  [ngClass]="{ 'is-invalid': submitted && f['cssFramework'].errors }" class="form-control ">
+                                <option [ngValue]="c.cssFrameworkId" *ngFor="let c of cssFramework">
+                                    {{c.cssFrameworkName}}
+                                </option>
+                            </select>
+                            <div *ngIf="submitted && f['cssFramework'].errors" class="text-danger small"> 
+                                <div *ngIf="f['cssFramework'].errors['required']">CSS Framework is required</div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Release Date -->
-                    <div class=" row form-group justify-content-start mb-3">
-                        <label class="col-4 ps-5">Release Date</label>
-                        <input type="date" formControlName="releaseDate" class="form-control col-4" />
-                        <div class="text-danger "
-                            *ngIf="f['releaseDate'].touched && f['releaseDate'].errors && f['releaseDate'].errors['required']">
-                            <small class="text-danger">
-                                Last Name Required.
-                            </small>
+                    <div class=" row form-group justify-content-center justify-content-lg-start mb-3 overflow-hidden">
+                        <label class="col-lg-4 col-10 ps-2 ps-lg-5 text-truncate">Release Date</label>
+                        <div class="col-lg-4 col-10">
+                            <input type="date" formControlName="releaseDate" class="form-control "
+                            [ngClass]="{ 'is-invalid': submitted && f['releaseDate'].errors }">
+                            <div *ngIf="submitted && f['releaseDate'].errors" class="text-danger small"> 
+                                <div *ngIf="f['releaseDate'].errors['required']">Release Date is required</div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Billable / Non-Billable -->
-                    <div class=" row form-group justify-content-start mb-3">
-                        <label class="col-4 ps-5">Bill</label>
-                        <select formControlName="bill" class="form-control col-4">
-                            <option value=""></option>
-                            <option value="billable">Billable</option>
-                            <option value="non-billable">Non-Billable</option>
-                        </select>
-                        <div class="text-danger "
-                            *ngIf="f['bill'].touched && f['bill'].errors && f['bill'].errors['required']">
-                            <small class="text-danger">
-                                Last Name Required.
-                            </small>
+                    <div class="row form-group justify-content-center justify-content-lg-start mb-3 overflow-hidden">
+                        <label class="col-lg-4 col-10 ps-2 ps-lg-5 text-truncate">Bill</label>
+                        <div class="col-lg-4 col-10">
+                            <select formControlName="bill"  [ngClass]="{ 'is-invalid': submitted && f['bill'].errors }" class="form-control ">
+                                <option [ngValue]="c.billId" *ngFor="let c of bill">
+                                    {{c.billName}}
+                                </option>
+                            </select>
+                            <div *ngIf="submitted && f['bill'].errors" class="text-danger small"> 
+                                <div *ngIf="f['bill'].errors['required']">Bill is required</div>
+                            </div>
                         </div>
                     </div>
 
@@ -181,36 +178,37 @@
             </div>
 
             <!-- Spend Hours -->
-            <div class="row form-group d-flex mb-3 justify-content-center">
-                <label class="col-2"> Spend Hours</label>
-                <input type="text" formControlName="spendHours" class="form-control col-6" />
-                <div class="text-danger "
-                    *ngIf="f['spendHours'].touched && f['spendHours'].errors && f['spendHours'].errors['required']">
-                    <small class="text-danger">
-                        Last Name Required.
-                    </small>
+            <div class="row form-group d-flex mb-3 justify-content-center overflow-hidden">
+                <label class="col-lg-2 col-10 text-truncate"> Spend Hours</label>
+                <div class="col-lg-6 col-10">
+                    <input type="text" formControlName="spendHours" class="form-control "
+                    [ngClass]="{ 'is-invalid': submitted && f['spendHours'].errors }">
+                    <div *ngIf="submitted && f['spendHours'].errors" class="text-danger small"> 
+                        <div *ngIf="f['spendHours'].errors['required']">Spend Hours is required</div>
+                    </div>
                 </div>
             </div>
 
 
             <!-- Comments -->
-            <div class="row form-group d-flex mb-3 justify-content-center">
-                <label class="col-2">Comments</label>
-                <input type="text" formControlName="comments" class="form-control col-6" />
-                <div class="text-danger "
-                    *ngIf="f['comments'].touched && f['comments'].errors && f['comments'].errors['required']">
-                    <small class="text-danger">
-                        Last Name Required.
-                    </small>
+            <div class="row form-group d-flex mb-3 justify-content-center overflow-hidden">
+                <label class="col-lg-2 col-10 text-truncate">Comments</label>
+                <div class="col-lg-6 col-10">
+                    <input type="text" formControlName="comments" class="form-control "
+                    [ngClass]="{ 'is-invalid': submitted && f['comments'].errors }">
+                            <div *ngIf="submitted && f['comments'].errors" class="text-danger small"> 
+                                <div *ngIf="f['comments'].errors['required']">Comments is required</div>
+                            </div>
                 </div>
             </div>
 
-
+            <!-- Buttons -->
             <div class="text-center py-5">
-                <button type="submit" class="btn btn-primary"  [disabled]="registerForm.invalid">Register</button>
+                <button type="submit" class="btn btn-primary">Register</button>
                 <button type="button" class="btn btn-gray text-white ms-3" type="reset"
                     (click)="onCancel()">Cancel</button>
             </div>
+
         </form>
     </div>
 </div>
