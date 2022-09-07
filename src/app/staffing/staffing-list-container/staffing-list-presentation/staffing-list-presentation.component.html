@@ -1,10 +1,10 @@
 <div class="rounded bg-white d-flex flex-column overflow-hidden h-100">
     <!-- Start: Header Section -->
     <div class="d-flex  justify-content-between border-bottom  p-4 overflow-hidden">
-        <div class="search-box flex-shrink-0 d-md-flex p-0 rounded-2 ">
-            <input type="text" placeholder="Search" class="search-box-input text-lightgray border-0 rounded-start p-2 bg-graywhite">
+        <div class="search-box flex-shrink-0 d-md-flex p-0 rounded-2 overflow-hidden ">
+            <input type="text" placeholder="Search" class="search-box-input text-lightgray border-0 rounded-start p-2 bg-graywhite text-truncate">
             <button type="button"
-                class="btn flex-grow-1 justify-content-center align-items-center text-muted d-flex rounded-0 rounded-end border-start p-2 fs-6 bg-graywhite">Search
+                class=" btn flex-grow-1 justify-content-center align-items-center text-muted d-flex rounded-0 rounded-end text-truncate border-start p-2 fs-6 bg-graywhite">Search
                 <span class="icon-circle-down ps-2 mt-1"></span>
             </button>
         </div>
@@ -20,23 +20,23 @@
 
         <div id="thead" class="overflow-horizontal flex-shrink-0" (scroll)="getTHeadScroll($event)">
             <table class="table mb-0">
-                <thead class="border-bottom text-muted fw-lighter overflow-hidden text-truncate">
-                    <tr>
-                        <th class="p-2 text-center">Sr. No.</th>
-                        <th class="p-2">Developer Name</th>
-                        <th class="p-2">Project/POC</th>
-                        <th class="p-2">PM/Lead Name</th>
-                        <th class="p-2">Module Lead Name</th>
-                        <th class="p-2">Staffing</th>
-                        <th class="p-2">Role</th>
-                        <th class="p-2">Framework/Tool</th>
-                        <th class="p-2">CSS Framework</th>
-                        <th class="p-2 text-center">Joining Date</th>
-                        <th class="p-2 text-center">Release Date</th>
-                        <th class="p-2 text-center">Status</th>
-                        <th class="p-2 text-center">Spend Hours</th>
-                        <th class="p-2">Comments</th>
-                        <th class="p-2">Action</th>
+                <thead class="border-bottom text-muted fw-lighter overflow-hidden ">
+                    <tr class="overflow-hidden">
+                        <th class="p-2 text-center text-truncate">Sr. No.</th>
+                        <th class="p-2 text-truncate">Developer Name</th>
+                        <th class="p-2 text-truncate">Project/POC</th>
+                        <th class="p-2 text-truncate">PM/Lead Name</th>
+                        <th class="p-2 text-truncate">Module Lead Name</th>
+                        <th class="p-2 text-truncate">Staffing</th>
+                        <th class="p-2 text-truncate">Role</th>
+                        <th class="p-2 text-truncate">Framework/Tool</th>
+                        <th class="p-2 text-truncate">CSS Framework</th>
+                        <th class="p-2 text-center text-truncate">Joining Date</th>
+                        <th class="p-2 text-center text-truncate">Release Date</th>
+                        <th class="p-2 text-center text-truncate">Status</th>
+                        <th class="p-2 text-center text-truncate">Spend Hours</th>
+                        <th class="p-2 text-truncate">Comments</th>
+                        <th class="p-2 text-truncate">Action</th>
                     </tr>
                 </thead>
             </table>
@@ -44,25 +44,25 @@
         <div id="tbody" class="flex-grow-1 overflow-auto d-flex" (scroll)="getTBodyScroll($event)">
             <div>
                 <table class="table mb-0">
-                    <tbody class="p-3 overflow-hidden text-truncate">
+                    <tbody class="p-3 ">
                         <tr *ngFor="let m of staffList | paginate: { itemsPerPage: 10, currentPage: p }, let i = index "
-                            class="border-bottom">
-                            <td scope="row" class="p-2 text-center">{{ m.id}}</td>
-                            <td class="p-2">{{ m.developerName }}</td>
-                            <td class="p-2">{{ m.project }}</td>
-                            <td class="p-2">{{ m.leadName }}</td>
-                            <td class="p-2">{{ m.moduleLeadName }}</td>
-                            <td class="p-2">{{ m.staffing }}</td>
-                            <td class="p-2">{{ m.role }}</td>
-                            <td class="p-2">{{ m.frameworkTool }}</td>
-                            <td class="p-2">{{ m.cssFramework }}</td>
-                            <td class="p-2 text-center">{{ m.joiningDate }}</td>
-                            <td class="p-2 text-center">{{ m.releaseDate }}</td>
-                            <td class="p-2 text-center">{{ m.status }}</td>
-                            <td class="p-2 text-center">{{ m.spendHours }} hours</td>
-                            <!-- <td class="p-2 text-center">{{ m. }} Bill</td> -->
-                            <td class="p-2">{{ m.comments }}</td>
-                            <td class="p-2">
+                            class="border-bottom overflow-hidden">
+                            <td scope="row text-truncate" class="p-2 text-center">{{ m.id}}</td>
+                            <td class="p-2 text-truncate">{{ m.developerName }}</td>
+                            <td class="p-2 text-truncate">{{ m.project }}</td>
+                            <td class="p-2 text-truncate">{{ m.leadName }}</td>
+                            <td class="p-2 text-truncate">{{ m.moduleLeadName }}</td>
+                            <td class="p-2 text-truncate">{{ m.staffing | dropDown: staffingList}}</td>
+                            <td class="p-2 text-truncate">{{ m.role | dropDown: roleList}}</td>
+                            <td class="p-2 text-truncate">{{ m.frameworkTool | dropDown: frameworkToolList }}</td>
+                            <td class="p-2 text-truncate">{{ m.cssFramework | dropDown: cssFrameWorkList }}</td>
+                            <td class="p-2 text-center text-truncate">{{ m.joiningDate }}</td>
+                            <td class="p-2 text-center text-truncate">{{ m.releaseDate }}</td>
+                            <td class="p-2 text-center text-truncate">{{ m.status | dropDown: statusList}}</td>
+                            <td class="p-2 text-center text-truncate">{{ m.spendHours }} hours</td>
+                            <td class="p-2 text-center bill text-truncate">{{ m.bill | dropDown: billList}} Bill</td>
+                            <td class="p-2 text-truncate">{{ m.comments }}</td>
+                            <td class="p-2 text-truncate">
                                 <button class="btn btn-primary me-2" routerLink="/staffing/edit/{{m.id}}">
                                     <span class="icon-files-empty text-white"></span>
                                 </button>

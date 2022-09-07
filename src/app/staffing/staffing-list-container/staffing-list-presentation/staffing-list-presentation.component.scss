@@ -61,7 +61,11 @@
   #thead::-webkit-scrollbar {
     height: 0;
 }
-  
+  .btn{
+    color: none !important;
+    border: none !important;
+    border-left: 1px solid #ced4da !important;
+  }
 // .ngx-pagination {
 //     padding-left: 0px !important;
 //   }

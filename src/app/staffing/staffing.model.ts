@@ -6,6 +6,7 @@ export class staffingData {
     moduleLeadName: string
     staffing: string
     role: string
+    bill: string
     frameworkTool: string
     cssFramework: string
     joiningDate: any
@@ -20,6 +21,7 @@ export class staffingData {
         moduleLeadName: string,
         staffing: string,
         role: string,
+        bill: string,
         frameworkTool: string,
         cssFramework: string,
         joiningDate: Date,
@@ -36,6 +38,7 @@ export class staffingData {
         this.moduleLeadName = moduleLeadName
         this.staffing = staffing
         this.role = role
+        this.bill = bill
         this.frameworkTool = frameworkTool
         this.cssFramework = cssFramework
         this.joiningDate = joiningDate

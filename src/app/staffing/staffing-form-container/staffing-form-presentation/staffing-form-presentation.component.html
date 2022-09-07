@@ -57,8 +57,8 @@
                 <label class="col-lg-2 col-10 text-truncate">Staffing</label>
                 <div class=" col-lg-6 col-10">
                     <select formControlName="staffing"  [ngClass]="{ 'is-invalid': submitted && f['staffing'].errors }"  class="form-control">
-                        <option [ngValue]="c.staffingId" *ngFor="let c of staffing">
-                            {{c.staffingName}}
+                        <option [ngValue]="c.Id" *ngFor="let c of staffingList">
+                            {{c.Name}}
                         </option>
 
                     </select>
@@ -73,8 +73,8 @@
                 <label class="col-lg-2 col-10 text-truncate">Role</label>
                 <div class="col-lg-6 col-10">
                     <select formControlName="role"  [ngClass]="{ 'is-invalid': submitted && f['role'].errors }" class="form-control ">
-                        <option [ngValue]="c.roleId" *ngFor="let c of role">
-                            {{c.roleName}}
+                        <option [ngValue]="c.Id" *ngFor="let c of roleList">
+                            {{c.Name}}
                         </option>
                     </select>
                     <div *ngIf="submitted && f['role'].errors" class="text-danger small"> 
@@ -93,8 +93,8 @@
                         <div class="col-lg-4 col-10">
                             <select formControlName="frameworkTool"  [ngClass]="{ 'is-invalid': submitted && f['frameworkTool'].errors }"
                                 class="form-control ">
-                                <option [ngValue]="c.frameworkToolId" *ngFor="let c of frameworkTool">
-                                    {{c.frameworkToolName}}
+                                <option [ngValue]="c.Id" *ngFor="let c of frameworkToolList">
+                                    {{c.Name}}
                                 </option>
                             </select>
                             <div *ngIf="submitted && f['frameworkTool'].errors" class="text-danger small"> 
@@ -120,8 +120,8 @@
                         <label class="col-lg-4 col-10 text-truncate">Status</label>
                         <div class="col-lg-4 col-10">
                             <select formControlName="status" [ngClass]="{ 'is-invalid': submitted && f['status'].errors }" class="form-control ">
-                                <option [ngValue]="c.statusId" *ngFor="let c of status">
-                                    {{c.statusName}}
+                                <option [ngValue]="c.Id" *ngFor="let c of statusList">
+                                    {{c.Name}}
                                 </option>
                             </select>
                             <div *ngIf="submitted && f['status'].errors" class="text-danger small"> 
@@ -137,8 +137,8 @@
                         <label class="col-lg-4 col-10 ps-2 ps-lg-5 text-truncate">CSS Framework</label>
                         <div class="col-lg-4 col-10">
                             <select formControlName="cssFramework"  [ngClass]="{ 'is-invalid': submitted && f['cssFramework'].errors }" class="form-control ">
-                                <option [ngValue]="c.cssFrameworkId" *ngFor="let c of cssFramework">
-                                    {{c.cssFrameworkName}}
+                                <option [ngValue]="c.Id" *ngFor="let c of cssFrameWorkList">
+                                    {{c.Name}}
                                 </option>
                             </select>
                             <div *ngIf="submitted && f['cssFramework'].errors" class="text-danger small"> 
@@ -164,8 +164,8 @@
                         <label class="col-lg-4 col-10 ps-2 ps-lg-5 text-truncate">Bill</label>
                         <div class="col-lg-4 col-10">
                             <select formControlName="bill"  [ngClass]="{ 'is-invalid': submitted && f['bill'].errors }" class="form-control ">
-                                <option [ngValue]="c.billId" *ngFor="let c of bill">
-                                    {{c.billName}}
+                                <option [ngValue]="c.Id" *ngFor="let c of billList">
+                                    {{c.Name}}
                                 </option>
                             </select>
                             <div *ngIf="submitted && f['bill'].errors" class="text-danger small"> 

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DropdownService } from '../../dropdown.service';
 import { staffingData } from '../../staffing.model';
 import { StaffingFormPresenterService } from '../staffing-form-presenter/staffing-form-presenter.service';
 
@@ -24,87 +25,8 @@ export class StaffingFormPresentationComponent implements OnInit {
   public registerForm!: FormGroup;
   public formtitle: string = 'Add Staff';
   submitted = false;
-  public staffing=[
-    {
-      staffingId:1,
-      staffingName:'official'
-    },
-    {
-      staffingId:2,
-      staffingName:'shadow'
-    }
-  ]
 
-  public role=[
-    {
-      roleId:1,
-      roleName:'UI'
-    },
-    {
-      roleId:2,
-      roleName:'Frontend'
-    },
-    {
-      roleId:1,
-      roleName:'Mean'
-    },
-  ]
-
-  public frameworkTool=[
-    {
-      frameworkToolId:1,
-      frameworkToolName:'React'
-    },
-    {
-      frameworkToolId:2,
-      frameworkToolName:'Angular'
-    },
-    {
-      frameworkToolId:3,
-      frameworkToolName:'vue'
-    }
-  ]
-
-  public status=[
-    {
-      statusId:1,
-      statusName:'Hold'
-    },
-    {
-      statusId:2,
-      statusName:'In progress'
-    },
-    {
-      statusId:3,
-      statusName:'Yet to start'
-    },
-    {
-      statusId:1,
-      statusName:'Closed'
-    },
-  ]
-
-  public cssFramework=[
-    {
-      cssFrameworkId:1,
-      cssFrameworkName:'Bootstrap'
-    },
-    {
-      cssFrameworkId:1,
-      cssFrameworkName:'Tailwind'
-    },
-  ]
-  public bill=[
-    {
-      billId:1,
-      billName:'Billable'
-    },
-    {
-      billId:1,
-      billName:'Non-Billable'
-    }
-  ]
-
+ 
   
 
  
@@ -112,14 +34,19 @@ export class StaffingFormPresentationComponent implements OnInit {
 
  
 
-  constructor(private staffingFormPresenterService: StaffingFormPresenterService, private route: Router) {
+  constructor(private staffingFormPresenterService: StaffingFormPresenterService, private route: Router,private dropdownService: DropdownService ) {
     this.registerForm = this.staffingFormPresenterService.buildForm()
     this.emitFormdata = new EventEmitter<staffingData>();
     this.emitUpdatedata = new EventEmitter<staffingData>();
     this.addUserData = new EventEmitter<staffingData>();
 
   }
-
+staffingList = this.dropdownService.staffing
+billList = this.dropdownService.bill
+roleList = this.dropdownService.role
+cssFrameWorkList = this.dropdownService.cssFramework
+frameworkToolList = this.dropdownService.frameworkTool
+statusList = this.dropdownService.status
 
   ngOnInit(): void {
 

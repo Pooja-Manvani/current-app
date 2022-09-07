@@ -17,4 +17,7 @@
 
 .search-box-input{
     width: 85%;
+&:focus{
+    outline-style: none;
+}
 }
