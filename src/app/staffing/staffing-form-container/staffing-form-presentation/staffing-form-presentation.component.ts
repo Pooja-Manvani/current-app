@@ -26,14 +26,6 @@ export class StaffingFormPresentationComponent implements OnInit {
   public formtitle: string = 'Add Staff';
   submitted = false;
 
- 
-  
-
- 
-
-
- 
-
   constructor(private staffingFormPresenterService: StaffingFormPresenterService, private route: Router,private dropdownService: DropdownService ) {
     this.registerForm = this.staffingFormPresenterService.buildForm()
     this.emitFormdata = new EventEmitter<staffingData>();
@@ -50,17 +42,11 @@ statusList = this.dropdownService.status
 
   ngOnInit(): void {
 
-    // this.staffingFormPresenterService.addUser$.subscribe((res: any) => {
-    //   if (res) {
-    //     this.addUserData.emit(res);
-    //   }
-    // })
     this.staffingFormPresenterService.getdata$.subscribe(data => {
       if (this.formtitle === 'Add Staff') {
         this.addUserData.emit(data)
       }
       else if('Edit User') {
-        debugger
         this.emitUpdatedata.emit(data)
       }
     })
@@ -74,7 +60,6 @@ statusList = this.dropdownService.status
     return this.registerForm.controls;
   }
   OnSubmit() {
-    debugger
     this.submitted = true;
       this.staffingFormPresenterService.onSubmit(this.registerForm);
     

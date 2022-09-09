@@ -29,6 +29,7 @@ statusList = this.dropDownService.status
   copyData: any;
   nodatafound: boolean | undefined;
   finalData: any;
+  searchText: any
   @Input() set staffList(value: staffingData[] | null ){
     if (value){
       this._staffList = value
@@ -74,7 +75,7 @@ statusList = this.dropDownService.status
   onFilter(){
     const OverlayRef = this.overlay.create({
       hasBackdrop: true,
-      positionStrategy: this.overlay.position().global().centerHorizontally().centerVertically(),
+      positionStrategy: this.overlay.position().global().right().end(),
     })
 
     const component = new ComponentPortal(StaffingfilterComponent)
@@ -90,9 +91,6 @@ statusList = this.dropDownService.status
     
     componentRef.instance.emitFilterData.subscribe((data) => {
       this.filterData = data;
-      // this.filtering();
-      // OverlayRef.detach();
-
       
       let Keys = Object.keys(this.filterData)
 

@@ -26,9 +26,7 @@ export class StaffingFormContainerComponent implements OnInit {
   }
 
   public addUserData(value:any){
-    debugger
     this.staffService.postdata(value).subscribe((res:any)=>{
-      debugger
       this.route.navigateByUrl('/staffing/staffingList');
     })
   }

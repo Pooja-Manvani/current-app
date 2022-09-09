@@ -17,7 +17,7 @@ export class StaffingfilterComponent implements OnInit {
 
     this.Filterformgroup = this.fb.group(
       {
-        projectName:[''],
+        project:[''],
         leadName:[''],
         developerName:['']
       })

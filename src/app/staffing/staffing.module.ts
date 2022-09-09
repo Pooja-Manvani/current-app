@@ -9,9 +9,10 @@ import { StaffingListContainerComponent } from './staffing-list-container/staffi
 import { StaffingFormPresentationComponent } from './staffing-form-container/staffing-form-presentation/staffing-form-presentation.component';
 import { StaffingListPresentationComponent } from './staffing-list-container/staffing-list-presentation/staffing-list-presentation.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DropDownPipe } from './drop-down.pipe';
 import { StaffingfilterComponent } from './staffing-form-container/staffing-form-presentation/staffingfilter/staffingfilter.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 
@@ -23,7 +24,8 @@ import { StaffingfilterComponent } from './staffing-form-container/staffing-form
     StaffingFormPresentationComponent,
     StaffingListPresentationComponent,
     DropDownPipe,
-    StaffingfilterComponent
+    StaffingfilterComponent,
+
   ],
   imports: [
     CommonModule,
@@ -31,6 +33,8 @@ import { StaffingfilterComponent } from './staffing-form-container/staffing-form
     NgxPaginationModule,
     ReactiveFormsModule,
     OverlayModule,
+    Ng2SearchPipeModule,
+    FormsModule
   ]
 })
 export class StaffingModule { }

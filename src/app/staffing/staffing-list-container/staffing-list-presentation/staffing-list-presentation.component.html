@@ -1,15 +1,18 @@
 <div class="rounded bg-white d-flex flex-column overflow-hidden h-100">
     <!-- Start: Header Section -->
     <div class="d-flex  justify-content-between border-bottom  p-4 overflow-hidden">
-        <div class="search-box flex-shrink-0 d-md-flex p-0 rounded-2 overflow-hidden ">
-            <input type="text" placeholder="Search" class="search-box-input text-lightgray border-0 rounded-start p-2 bg-graywhite text-truncate">
-            <button type="button"
-                class=" btn flex-grow-1 justify-content-center align-items-center text-muted d-flex rounded-0 rounded-end text-truncate border-start p-2 fs-6 bg-graywhite">Search
+        <div class="search-box flex-shrink-0 p-0 rounded-2 overflow-hidden ">
+            <input type="text" placeholder="Search" class="search-box-input text-lightgray border-0 rounded-start p-2 bg-graywhite text-truncate"  [(ngModel)]="searchText">
+            <!-- <button type="button"
+                class="d-none btn flex-grow-1 justify-content-center align-items-center text-muted d-flex rounded-0 rounded-end text-truncate border-start p-2 fs-6 bg-graywhite">Search
                 <span class="icon-circle-down ps-2 mt-1"></span>
-            </button>
+            </button> -->
         </div>
         <div class="d-flex flex-shrink-0">
-            <button type="button" class="btn btn-primary me-2 p-lg-2 fs-6 d-none d-lg-block" type="button" (click)="onFilter()">Filter</button>
+            <button type="button" class="btn btn-primary me-2 p-lg-2 fs-6 d-none d-lg-block position-relative" type="button" (click)="onFilter()"> Filter
+                <span *ngIf="notification"
+                class="badge-notification position-absolute  top-0 start-100 translate-middle bg-danger border border-light rounded-circle"></span>
+            </button>
             <button type="button" class="btn btn-primary me-2 p-lg-2 fs-6" type="reset" (click)="onReset()">Reset</button>
             <button type="button" class="btn btn-primary  p-lg-2 fs-6" routerLink="/staffing/staffingForm">Add Staff</button>
         </div>
@@ -45,7 +48,7 @@
             <div>
                 <table class="table mb-0">
                     <tbody class="p-3 ">
-                        <tr *ngFor="let m of staffList | paginate: { itemsPerPage: 10, currentPage: p }, let i = index "
+                        <tr *ngFor="let m of staffList | paginate: { itemsPerPage: 10, currentPage: p } | filter:searchText, let i = index "
                             class="border-bottom overflow-hidden">
                             <td scope="row text-truncate" class="p-2 text-center">{{ m.id}}</td>
                             <td class="p-2 text-truncate">{{ m.developerName }}</td>
