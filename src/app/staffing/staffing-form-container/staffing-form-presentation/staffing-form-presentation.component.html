@@ -1,6 +1,8 @@
-<!-- main app container -->
+<!--Start: main app container -->
 <div class="card border-0 shadow-sm m-4 bg-white">
+    <!-- Form Heading -->
     <h2 class="text-center pt-3">{{ formtitle }}</h2>
+    <!-- Start: Form Body -->
     <div class="card-body fw-bold text-muted">
         <form [formGroup]="registerForm" (ngSubmit)="OnSubmit()">
 
@@ -211,4 +213,6 @@
 
         </form>
     </div>
+     <!-- End: Form Body -->
 </div>
+<!--End: main app container -->

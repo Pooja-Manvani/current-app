@@ -14,6 +14,12 @@
     padding-left: 0;
 }
 
+.pagination-position {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .example-menu {
     display: inline-flex;
     flex-direction: column;
@@ -61,11 +67,11 @@
   #thead::-webkit-scrollbar {
     height: 0;
 }
-  .btn{
-    color: none !important;
-    border: none !important;
-    border-left: 1px solid #ced4da !important;
-  }
+  // .btn{
+  //   color: none !important;
+  //   border: none !important;
+  //   border-left: 1px solid #ced4da !important;
+  // }
   
   .badge-notification {
     padding: 5px;
